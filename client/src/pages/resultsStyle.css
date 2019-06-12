@@ -1,0 +1,27 @@
+.results {
+    text-align: center;
+    margin: auto;
+}
+
+.quizScore {
+    color: red;
+}
+
+.card-body{
+    border: 10px solid #1E90FF ;
+    border-radius: 25px;
+    padding: 0;
+    background-color: #1E90FF;
+    width: 75%;
+    margin: auto;
+    text-align: left;
+}
+
+.wrong {
+    color: red;
+}
+
+.right {
+    color: green;
+}
+

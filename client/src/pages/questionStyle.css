@@ -1,8 +1,16 @@
 .card-body {
-    border: 30px solid #1E90FF ;
+    border: 20px solid #1E90FF ;
     border-radius: 25px;
     padding: 0;
     background-color: #1E90FF;
+    width: 75%;
+    margin: auto;
+    text-align: left;
+}
+
+.card-header {
+    width: 75%;
+    margin: auto;
 }
 
 .card-box {
@@ -11,11 +19,22 @@
     padding: 0;
     margin: 0;
     background-color: #fff;
+
 }
 
 h1 {
-    font-size: 60px;
+    font-size: 40px;
 }
 
-.card-header {
+h5 {
+    font-size: 28px;
+    text-align: center;
+}
+
+p {
+    font-size: 28px;
+}
+
+li {
+    font-size: 24px;
 }

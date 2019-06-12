@@ -1,12 +1,12 @@
 .jumbotron {
-    height: 180px;
+    height: 160px;
     width: 75%;
     margin: auto;
     background: #1E90FF;
     padding: auto;
     margin-top: 20px;
     text-align: center;
-    border: 5px solid #1E90FF;
+    border: 3px solid #1E90FF;
     border-radius: 25px;
 }
 
@@ -16,9 +16,9 @@
 }
 
 img {
-    width: 180px;
-    height: 180px;
-    margin-top: 0px;
+    width: 160px;
+    height: 160px;
+    /* margin-top: 0px; */
 
 }
 
