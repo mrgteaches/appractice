@@ -5,9 +5,21 @@ import { Col, Row, Container } from "../components/Grid";
 import "./courseStyle.css";
 
 class Course extends Component {
-    // state= {
-    //     course = 0
-    // };
+    state= {
+        courseGrade: 100,
+        quiz1:  "Untaken",
+        quiz2:  "Untaken",
+        quiz3:  "Untaken",
+        quiz4:  "Untaken",
+        quiz5:  "Untaken",
+        quiz6:  "Untaken",
+        quiz7:  "Untaken",
+        quiz8:  "Untaken",
+        quiz9:  "Untaken",
+        quiz10:  "Untaken",
+        midterm:  "Untaken",
+        final:  "Untaken"
+    };
 
 
     render() {

@@ -4,9 +4,12 @@ import { Col, Row, Container } from "../components/Grid";
 import "./resultsStyle.css";
 
 class Results extends Component {
-    // state= {
-    //     course = 0
-    // };
+    state= {
+        quizScore: 100,
+        question: "",
+        yourAnswer: "",
+        correctAnswer: ""
+    };
 
 
     render() {

@@ -3,9 +3,13 @@ import { Col, Row, Container } from "../components/Grid";
 import "./questionStyle.css";
 
 class Question extends Component {
-    // state= {
-    //     course = 0
-    // };
+    state= {
+        currentQuestion: "",
+        answer1: "",
+        answer2: "",
+        answer3: "",
+        answer4: ""
+    };
 
 
     render() {
