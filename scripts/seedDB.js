@@ -4,54 +4,561 @@ const db = require("../models");
 mongoose.connect(
     process.env.MONGODB_URI ||
     "mongodb://localhost/apbiologydb"
-  );
+);
 
-const quiz1Seed = [
-  {
-    question: "Quiz 1 Question 1",
-    answer1: "Quiz 1 Question 1 Correct Answer",
-    answer2: "Quiz 1 Question 1 Answer 2",
-    answer3: "Quiz 1 Question 1 Answer 3",
-    answer4: "Quiz 1 Question 1 Answer 4"
-  },
-  {
-    question: "Quiz 1 Question 2",
-    answer1: "Quiz 1 Question 2 Correct Answer",
-    answer2: "Quiz 1 Question 2 Answer 2",
-    answer3: "Quiz 1 Question 2 Answer 3",
-    answer4: "Quiz 1 Question 2 Answer 4"    
-  },
-  {
-    question: "Quiz 1 Question 3",
-    answer1: "Quiz 1 Question 3 Correct Answer",
-    answer2: "Quiz 1 Question 3 Answer 2",
-    answer3: "Quiz 1 Question 3 Answer 3",
-    answer4: "Quiz 1 Question 3 Answer 4"    
-  },
-  {
-    question: "Quiz 1 Question 4",
-    answer1: "Quiz 1 Question 4 Correct Answer",
-    answer2: "Quiz 1 Question 4 Answer 2",
-    answer3: "Quiz 1 Question 4 Answer 3",
-    answer4: "Quiz 1 Question 4 Answer 4"    
-  },
-  {
-    question: "Quiz 1 Question 5",
-    answer1: "Quiz 1 Question 5 Correct Answer",
-    answer2: "Quiz 1 Question 5 Answer 2",
-    answer3: "Quiz 1 Question 5 Answer 3",
-    answer4: "Quiz 1 Question 5 Answer 4"    
-  }
-];
+const quizzes = [
+    {
+        questions: [
+            {
+                question: "This is question number 1 for quiz 1",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question
+            {
+                question: "This is question number 2 for quiz 1",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 3 for quiz 1",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 4 for quiz 1",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 5 for quiz 1",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 6 for quiz 1",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 7 for quiz 1",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 8 for quiz 1",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 9 for quiz 1",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 10 for quiz 1",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of last question 
+        ]//end of array of questions for quiz 1
+    },//end of quiz 1 object
+    {
+        questions: [
+            {
+                question: "This is question number 1 for quiz 2",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question
+            {
+                question: "This is question number 2 for quiz 2",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 3 for quiz 2",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 4 for quiz 2",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 5 for quiz 2",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 6 for quiz 2",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 7 for quiz 2",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 8 for quiz 2",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 9 for quiz 2",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 10 for quiz 2",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of last question 
+        ]//end of array of questions for quiz 2
+    },//end of quiz 2 object
+    {
+        questions: [
+            {
+                question: "This is question number 1 for quiz 3",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question
+            {
+                question: "This is question number 2 for quiz 3",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 3 for quiz 3",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 4 for quiz 3",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 5 for quiz 3",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 6 for quiz 3",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 7 for quiz 3",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 8 for quiz 3",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 9 for quiz 3",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 10 for quiz 3",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of last question 
+        ]//end of array of questions for quiz 3
+    },//end of quiz 3 object
+    {
+        questions: [
+            {
+                question: "This is question number 1 for quiz 4",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question
+            {
+                question: "This is question number 2 for quiz 4",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 3 for quiz 4",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 4 for quiz 4",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 5 for quiz 4",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 6 for quiz 4",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 7 for quiz 4",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 8 for quiz 4",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 9 for quiz 4",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 10 for quiz 4",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of last question 
+        ]//end of array of questions for quiz 4
+    },//end of quiz 4 object
+    {
+        questions: [
+            {
+                question: "This is question number 1 for quiz 5",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question
+            {
+                question: "This is question number 2 for quiz 5",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 3 for quiz 5",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 4 for quiz 5",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 5 for quiz 5",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 6 for quiz 5",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 7 for quiz 5",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 8 for quiz 5",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 9 for quiz 5",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 10 for quiz 5",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of last question 
+        ]//end of array of questions for quiz 5
+    },//end of quiz 5 object
+    {
+        questions: [
+            {
+                question: "This is question number 1 for quiz 6",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question
+            {
+                question: "This is question number 2 for quiz 6",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 3 for quiz 6",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 4 for quiz 6",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 5 for quiz 6",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 6 for quiz 6",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 7 for quiz 6",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 8 for quiz 6",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 9 for quiz 6",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 10 for quiz 6",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of last question 
+        ]//end of array of questions for quiz 6
+    },//end of quiz 6 object
+    {
+        questions: [
+            {
+                question: "This is question number 1 for quiz 7",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question
+            {
+                question: "This is question number 2 for quiz 7",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 3 for quiz 7",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 4 for quiz 7",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 5 for quiz 7",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 6 for quiz 7",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 7 for quiz 7",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 8 for quiz 7",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 9 for quiz 7",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 10 for quiz 7",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of last question 
+        ]//end of array of questions for quiz 7
+    },//end of quiz 7 object
+    {
+        questions: [
+            {
+                question: "This is question number 1 for quiz 8",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question
+            {
+                question: "This is question number 2 for quiz 8",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 3 for quiz 8",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 4 for quiz 8",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 5 for quiz 8",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 6 for quiz 8",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 7 for quiz 8",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 8 for quiz 8",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 9 for quiz 8",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 10 for quiz 8",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of last question 
+        ]//end of array of questions for quiz 8
+    },//end of quiz 8 object
+    {
+        questions: [
+            {
+                question: "This is question number 1 for quiz 9",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question
+            {
+                question: "This is question number 2 for quiz 9",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 3 for quiz 9",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 4 for quiz 9",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 5 for quiz 9",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 6 for quiz 9",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 7 for quiz 9",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 8 for quiz 9",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 9 for quiz 9",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 10 for quiz 9",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of last question 
+        ]//end of array of questions for quiz 9
+    },//end of quiz 9 object
+    {
+        questions: [
+            {
+                question: "This is question number 1 for quiz 10",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question
+            {
+                question: "This is question number 2 for quiz 10",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 3 for quiz 10",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 4 for quiz 10",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 5 for quiz 10",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 6 for quiz 10",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 7 for quiz 10",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 8 for quiz 10",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 9 for quiz 10",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of question 
+            {
+                question: "This is question number 10 for quiz 10",
+                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                correctAnswer: 1
+            },//end of last question 
+        ]//end of array of questions for quiz 10
+    }//end of quiz 10 object
 
-db.Quiz1
-  .remove({})
-  .then(() => db.Quiz1.collection.insertMany(quiz1Seed))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+]//end of array of quiz objects
+
+
+db.Quizzes
+    .remove({})
+    .then(() => db.Quizzes.collection.insertMany(quizzes))
+    .then(data => {
+        console.log(data.result.n + " records inserted!");
+        process.exit(0);
+    })
+    .catch(err => {
+        console.error(err);
+        process.exit(1);
+    });

@@ -21,6 +21,17 @@ class Course extends Component {
         final:  "Untaken"
     };
 
+  
+    handleQuizClick =() => {
+        console.log("Click works");
+        // const quizNo = event.target.attributes.getNamedItem("data-value".value);
+            //takes user to questions page
+            //fires loadquestions
+            
+    };
+
+  
+
 
     render() {
         return (
@@ -32,12 +43,26 @@ class Course extends Component {
                 </Row>
                 <Row>
                     <div className="summary">
-                        <h2>10 quizzes - 1 midterm - 1 final - Course Grade: <span className="finalGrade">95%</span></h2>
+                        <h2>10 quizzes - 1 midterm - 1 final - Course Grade: <span className="finalGrade">{this.state.courseGrade}%</span></h2>
                     </div>
                 </Row>
                 <Row>
                     <Col size="md-12">
-                        <BasicTable />
+                        <BasicTable 
+                        onClick={this.handleQuizClick}
+                        quiz1= {this.state.quiz1}
+                        quiz2= {this.state.quiz2}
+                        quiz3= {this.state.quiz3}
+                        quiz4= {this.state.quiz4}
+                        quiz5= {this.state.quiz5}
+                        quiz6= {this.state.quiz6}
+                        quiz7= {this.state.quiz7}
+                        quiz8= {this.state.quiz8}
+                        quiz9= {this.state.quiz9}
+                        quiz10= {this.state.quiz10}
+                        midterm= {this.state.midterm}
+                        final= {this.state.final}
+                        />
                     </Col>
                 </Row>
             </Container>

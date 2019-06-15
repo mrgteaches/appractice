@@ -1,79 +1,79 @@
 import React from 'react';
 import "./style.css";
 
-function BasicTable() {
+function BasicTable(props) {
     return (
         <table className="table table-striped">
 
             <tbody>
                 <tr>
-                    <th scope="row">Quiz 1</th>
-                    <td>90%</td>
+                   <th scope="row" > <a href="/question" onClick={props.onClick}>Quiz 1</a></th>
+                    <td>{props.quiz1}</td>
                     <td>Retake</td>
                     <td>Practice</td>
                 </tr>
                 <tr>
-                    <th scope="row">Quiz 2</th>
-                    <td>90%</td>
+                    <th scope="row"> <a href="/question" onClick={props.onClick}>Quiz 2</a></th>
+                    <td>{props.quiz2}</td>
                     <td>Retake</td>
                     <td>Practice</td>
                 </tr>
                 <tr>
-                    <th scope="row">Quiz 3</th>
-                    <td>85%</td>
+                    <th scope="row"><a href="/question" onClick={props.onClick}>Quiz 3</a></th>
+                    <td>{props.quiz3}</td>
                     <td>Retake</td>
                     <td>Practice</td>
                 </tr>
                 <tr>
-                    <th scope="row">Quiz 4</th>
-                    <td>90%</td>
+                    <th scope="row"><a href="/question" onClick={props.onClick}>Quiz 4</a></th>
+                    <td>{props.quiz4}</td>
                     <td>Retake</td>
                     <td>Practice</td>
                 </tr>
                 <tr>
-                    <th scope="row">Quiz 5</th>
-                    <td>90%</td>
+                    <th scope="row"><a href="/question" onClick={props.onClick}>Quiz 5</a></th>
+                    <td>{props.quiz5}</td>
                     <td>Retake</td>
                     <td>Practice</td>
                 </tr>
                 <tr>
-                    <th scope="row">Midterm</th>
-                    <td>90%</td>
+                    <th scope="row"><a href="/question" onClick={props.onClick}>Midterm</a></th>
+                    <td>{props.midterm}</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <th scope="row">Quiz 6</th>
-                    <td>75%</td>
+                    <th scope="row"><a href="/question" onClick={props.onClick}>Quiz 6</a></th>
+                    <td>{props.quiz6}</td>
                     <td>Retake</td>
                     <td>Practice</td>
                 </tr>
                 <tr>
-                    <th scope="row">Quiz 7</th>
-                    <td>90%</td>
+                    <th scope="row"><a href="/question" onClick={props.onClick}>Quiz 7</a></th>
+                    <td>{props.quiz7}</td>
                     <td>Retake</td>
                     <td>Practice</td>
                 </tr>
                 <tr>
-                    <th scope="row">Quiz 8</th>
-                    <td>90%</td>
+                    <th scope="row"><a href="/question" onClick={props.onClick}>Quiz 8</a></th>
+                    <td>{props.quiz8}</td>
                     <td>Retake</td>
                     <td>Practice</td>
                 </tr>
                 <tr>
-                    <th scope="row">Quiz 9</th>
-                    <td>Untaken</td>
-                    <td></td>
-                    <td>Practice</td>
-                </tr>
-                <tr>
-                    <th scope="row">Quiz 10</th>
-                    <td>Untaken</td>
+                    <th scope="row"><a href="/question" onClick={props.onClick}>Quiz 9</a></th>
+                    <td>{props.quiz9}</td>
                     <td></td>
                     <td>Practice</td>
                 </tr>
                 <tr>
-                    <th scope="row">Final</th>
-                    <td>Untaken</td>
+                    <th scope="row"><a href="/question" onClick={props.onClick}>Quiz 10</a></th>
+                    <td>{props.quiz10}</td>
+                    <td></td>
+                    <td>Practice</td>
+                </tr>
+                <tr>
+                    <th scope="row"><a href="/question" onClick={props.onClick}>Final</a></th>
+                    <td>{props.final}</td>
                     <td></td>
                     <td></td>
                 </tr>

@@ -1,4 +1,5 @@
 module.exports = {
-    Quiz1: require("./quiz1")
+    Scores: require("./Scores"),
+    Quizzes: require("./Quizzes"),   
   };
   
