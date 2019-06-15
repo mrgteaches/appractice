@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import "./questionStyle.css";
+import API from "../utils/API";
 
 class Question extends Component {
     state= {
@@ -17,16 +18,19 @@ class Question extends Component {
         this.loadQuestions();
     }
 
-    loadQuestions = (id) => {
+    loadQuestions = () => {
         //shows randomly selected questions, one by one, from the clicked quiz number - drawn from mongo; how to link this function with previously clicked quiz?
         //HOw to draw from mongo?
         
         //when all ten questions have been shown and user has clicked answers, go to results page;
         //whereupon the show results function fires, and state is set for appropriate quiz on this page
-        
+        API.getQuiz(this.props.match.params.id)
+      .then(res => this.setState({  }))
+      .catch(err => console.log(err));        
     }
 
     render() {
+        console.log(this.props)
         return (
             <Container fluid>
                 <Row>
@@ -52,7 +56,6 @@ class Question extends Component {
                 </Row>
             </Container>
         );
-
     }
 }
 

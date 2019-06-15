@@ -1,9 +1,8 @@
 const router = require("express").Router();
-const quizController = require("../../controllers/quizController");
-
+const quizController = require("../../controllers/quizControllers");
 
 router
-  .route("/:id")
-  .get(quizController.findQuiz1)
+  .route("/")
+  .get(quizController.findQuizzes)
 
 module.exports = router;

@@ -9,10 +9,12 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   
-  findQuiz1: function(req, res) {
+  findQuizzes: function(req, res) {
       db.Quizzes
-      .find({$arrayElemAt: [0]})
-      .then(dbModel => res.json(dbModel))
+      .find({})
+      .then(dbModel => { 
+          console.log(dbModel);
+          res.json(dbModel)})
       .catch(err => res.status(422).json(err));
   }
   

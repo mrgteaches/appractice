@@ -12,6 +12,10 @@ class Results extends Component {
         correctAnswer: ""
     };
 
+    showResults () {
+
+    };
+
 
     render() {
         return (

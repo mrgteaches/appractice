@@ -6,14 +6,13 @@ import Course from "./pages/Course";
 import Question from "./pages/Question";
 import Results from "./pages/Results";
 
-
 function App() {
   return (
     <Router>
       <div>
         <Switch>
           <Route exact path="/" component={Course} />
-          <Route exact path="/question" component={Question} />
+          <Route exact path="/question/:id" component={Question} />
           <Route exact path="/results" component={Results} />
         </Switch>
       </div>
