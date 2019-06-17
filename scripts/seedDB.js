@@ -8,6 +8,7 @@ mongoose.connect(
 
 const quizzes = [
     {
+        taken: "90%",
         questions: [
             {
                 question: "This is question number 1 for quiz 1",
@@ -62,6 +63,7 @@ const quizzes = [
         ]//end of array of questions for quiz 1
     },//end of quiz 1 object
     {
+        taken: "Untaken",
         questions: [
             {
                 question: "This is question number 1 for quiz 2",
@@ -116,6 +118,7 @@ const quizzes = [
         ]//end of array of questions for quiz 2
     },//end of quiz 2 object
     {
+        taken: "Untaken",
         questions: [
             {
                 question: "This is question number 1 for quiz 3",
@@ -170,6 +173,7 @@ const quizzes = [
         ]//end of array of questions for quiz 3
     },//end of quiz 3 object
     {
+        taken: "Untaken",
         questions: [
             {
                 question: "This is question number 1 for quiz 4",
@@ -224,6 +228,7 @@ const quizzes = [
         ]//end of array of questions for quiz 4
     },//end of quiz 4 object
     {
+        taken: "Untaken",
         questions: [
             {
                 question: "This is question number 1 for quiz 5",
@@ -278,6 +283,7 @@ const quizzes = [
         ]//end of array of questions for quiz 5
     },//end of quiz 5 object
     {
+        taken: "Untaken",
         questions: [
             {
                 question: "This is question number 1 for quiz 6",
@@ -332,6 +338,7 @@ const quizzes = [
         ]//end of array of questions for quiz 6
     },//end of quiz 6 object
     {
+        taken: "Untaken",
         questions: [
             {
                 question: "This is question number 1 for quiz 7",
@@ -386,6 +393,7 @@ const quizzes = [
         ]//end of array of questions for quiz 7
     },//end of quiz 7 object
     {
+        taken: "Untaken",
         questions: [
             {
                 question: "This is question number 1 for quiz 8",
@@ -440,6 +448,7 @@ const quizzes = [
         ]//end of array of questions for quiz 8
     },//end of quiz 8 object
     {
+        taken: "Untaken",
         questions: [
             {
                 question: "This is question number 1 for quiz 9",
@@ -494,6 +503,7 @@ const quizzes = [
         ]//end of array of questions for quiz 9
     },//end of quiz 9 object
     {
+        taken: "Untaken",
         questions: [
             {
                 question: "This is question number 1 for quiz 10",
