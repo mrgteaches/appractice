@@ -1,7 +1,6 @@
 const router = require("express").Router();
-// const quizRoutes = require("./quiz");
-const quizController = require("../../controllers/quizControllers");
+const quiz = require("./quiz.js");
 
-router.use("/quiz", quizController.findQuizzes);
+router.use("/quiz", quiz);
 
 module.exports = router;

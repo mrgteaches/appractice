@@ -5,4 +5,8 @@ router
   .route("/")
   .get(quizController.findQuizzes)
 
+router
+    .route("/:id")
+    .get(quizController.findById)
+
 module.exports = router;

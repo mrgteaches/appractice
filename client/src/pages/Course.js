@@ -14,7 +14,6 @@ class Course extends Component {
     };
 
     componentDidMount() {
-        // this.loadQuestions();
         API.getAllQuizzes()
             .then(res => {
                 this.setState({ quizzes: res })
@@ -22,14 +21,9 @@ class Course extends Component {
             .catch(err => console.log(err));
     }
 
-
-    handleQuizClick = (e) => {
-        // console.log("Click works");
-        console.log(e.currentTarget.dataset.id);
-        // const quizNo = event.target.attributes.getNamedItem("data-value".value);
-        //takes user to questions page
-        //fires loadquestions
-    };
+    // handleQuizClick = (e) => {
+    //     console.log(e.currentTarget.dataset.id);
+    // };
 
     render() {
         return (
@@ -47,7 +41,7 @@ class Course extends Component {
                 <Row>
                     <Col size="md-12">
                         <BasicTable
-                            onClick={this.handleQuizClick}
+                            // onClick={this.handleQuizClick}
                             quizzes={this.state.quizzes}
                             midterm={this.state.midterm}
                             final={this.state.final}

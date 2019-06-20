@@ -12,14 +12,14 @@ export default {
       .then(res => res.data);
   },
 
-     // Gets all scores
-  getScores: function() {
-    return axios.get("/api/scores");
-  },
+//      // Gets all scores
+//   getScores: function() {
+//     return axios.get("/api/scores");
+//   },
   
-   // Saves a score to the database
-   saveScore: function() {
-    return axios.post("/api/scores");
-  }
+//    // Saves a score to the database
+//    saveScore: function() {
+//     return axios.post("/api/scores");
+//   }
   
 }
