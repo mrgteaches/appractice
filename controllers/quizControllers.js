@@ -13,9 +13,21 @@ module.exports = {
       db.Quizzes
       .find({})
       .then(dbModel => { 
-          console.log(dbModel);
+        //   console.log(dbModel);
           res.json(dbModel)})
       .catch(err => res.status(422).json(err));
+  },
+
+  postScore: function(req, res) {
+    //   console.log(req.body, req.params.id);
+      db.Quizzes
+      .findOneAndUpdate({ _id: req.params.id }, req.body, {upsert: true})
+  
+      .then(dbModel => { 
+       
+        res.json(dbModel)
+    })
+    .catch(err => res.status(422).json(err));
   }
   
 };

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 
 function Quiz(props) {
-console.log(props.quiz);
     return (
         <tr key={props.quiz._id}>
             <th scope="row" > <Link to={`/question/${props.quiz._id}`} 

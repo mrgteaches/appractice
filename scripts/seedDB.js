@@ -13,52 +13,102 @@ const quizzes = [
         questions: [
             {
                 question: "This is question number 1 for quiz 1",
-                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-                correctAnswer: "Answer 1"
+                answers:  [
+                    {answer: "Answer 1", value: "1"}, 
+                    {answer: "Answer 2", value: "2"}, 
+                    {answer: "Answer 3", value: "3"}, 
+                    {answer: "Answer 4", value: "4"}
+                ],
+                correctAnswer: "Answer 1"                
             },//end of question
             {
                 question: "This is question number 2 for quiz 1",
-                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                answers: [ 
+                    {answer: "Answer 1", value: "1"}, 
+                    {answer: "Answer 2", value: "2"}, 
+                    {answer: "Answer 3", value: "3"}, 
+                    {answer: "Answer 4", value: "4"}
+            ],
                 correctAnswer: "Answer 1"
             },//end of question 
             {
                 question: "This is question number 3 for quiz 1",
-                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                answers: [
+                    {answer: "Answer 1", value: "1"}, 
+                    {answer: "Answer 2", value: "2"}, 
+                    {answer: "Answer 3", value: "3"}, 
+                    {answer: "Answer 4", value: "4"}
+                ],
                 correctAnswer: "Answer 1"
             },//end of question 
             {
                 question: "This is question number 4 for quiz 1",
-                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                answers: [
+                    {answer: "Answer 1", value: "1"}, 
+                    {answer: "Answer 2", value: "2"}, 
+                    {answer: "Answer 3", value: "3"}, 
+                    {answer: "Answer 4", value: "4"}
+                ],
                 correctAnswer: "Answer 1"
             },//end of question 
             {
                 question: "This is question number 5 for quiz 1",
-                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                answers: [
+                    {answer: "Answer 1", value: "1"}, 
+                    {answer: "Answer 2", value: "2"}, 
+                    {answer: "Answer 3", value: "3"}, 
+                    {answer: "Answer 4", value: "4"}
+                ],
                 correctAnswer: "Answer 1"
             },//end of question 
             {
                 question: "This is question number 6 for quiz 1",
-                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                answers: [
+                    {answer: "Answer 1", value: "1"}, 
+                    {answer: "Answer 2", value: "2"}, 
+                    {answer: "Answer 3", value: "3"}, 
+                    {answer: "Answer 4", value: "4"}
+                ],
                 correctAnswer: "Answer 1"
             },//end of question 
             {
                 question: "This is question number 7 for quiz 1",
-                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                answers: [
+                    {answer: "Answer 1", value: "1"}, 
+                    {answer: "Answer 2", value: "2"}, 
+                    {answer: "Answer 3", value: "3"}, 
+                    {answer: "Answer 4", value: "4"}
+                ],
                 correctAnswer: "Answer 1"
             },//end of question 
             {
                 question: "This is question number 8 for quiz 1",
-                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                answers: [
+                    {answer: "Answer 1", value: "1"}, 
+                    {answer: "Answer 2", value: "2"}, 
+                    {answer: "Answer 3", value: "3"}, 
+                    {answer: "Answer 4", value: "4"}
+                ],
                 correctAnswer: "Answer 1"
             },//end of question 
             {
                 question: "This is question number 9 for quiz 1",
-                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                answers: [
+                    {answer: "Answer 1", value: "1"}, 
+                    {answer: "Answer 2", value: "2"}, 
+                    {answer: "Answer 3", value: "3"}, 
+                    {answer: "Answer 4", value: "4"}
+                ],
                 correctAnswer: "Answer 1"
             },//end of question 
             {
                 question: "This is question number 10 for quiz 1",
-                answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                answers: [
+                    {answer: "Answer 1", value: "1"}, 
+                    {answer: "Answer 2", value: "2"}, 
+                    {answer: "Answer 3", value: "3"}, 
+                    {answer: "Answer 4", value: "4"}
+                ],
                 correctAnswer: "Answer 1"
             },//end of last question 
         ]//end of array of questions for quiz 1

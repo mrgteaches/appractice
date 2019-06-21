@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import "./questionStyle.css";
 import API from "../utils/API";
+import ResultsBtn from "../components/ResultsBtn";
 
 class Question extends Component {
-    state = {       
-        currentQuiz: {},    
-        currentQuizScore: 0
+    state = {
+        currentQuiz: {},
+        currentQuizScore: 0,
+        // currentQuestion: {}
     };
 
     componentDidMount() {
@@ -14,26 +16,51 @@ class Question extends Component {
     }
 
     loadQuestions = () => {
-        console.log(this.props.match.params.id)
+        // console.log(this.props.match.params.id)
         API.getQuiz(this.props.match.params.id)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 this.setState({ currentQuiz: res.data })
             })
             .catch(err => console.log(err));
     }
 
-    answerClick = () => {
-        this.setState({currentQuizScore: this.state.currentQuizScore + 10})
+    answerClick = (e) => {
+        if (e.target.value === 1) {
+            this.setState((state) => ({
+                currentQuizScore: state.currentQuizScore + 10
+            }));
+        }
+        else {
+            console.log("incorrect");
+        }
         console.log(this.state.currentQuizScore);
-        console.log("Answer clicked");      
+        console.log(e.currentTarget.value);
+
+    }
+
+    results = (id) => {
+        // console.log("get results");
+        // console.log(this.state.currentQuizScore);
+        API.storeScore(id, this.state.currentQuizScore.toString())
+        .then(res => {
+           
+            console.log(res);          
+        })
+        .catch(err => console.log(err));
+    }
+
+    shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }return array
     }
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
 
         return (
-
             this.state.currentQuiz.questions ?
                 <Container fluid>
                     <Row>
@@ -44,40 +71,29 @@ class Question extends Component {
                                 </div>
 
                                 {this.state.currentQuiz.questions.map((question, index) =>
-                                (
+                                    (
+                                        <div className="card-body">
+                                            <h5 className="card-title">Question {index + 1}</h5>
+                                            <div className="card-box">
+                                                <p className="card-text">{question["question"]} </p>
+                                                <ul className="list-group list-group-flush">
+                                                {this.shuffleArray(question.answers).map((answer) =>
+                                                        (
+                                                            <li className="list-group-item" value={answer.value} onClick={this.answerClick}>{answer.answer}</li>
+                                                        )
+                                                    )}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    )
+                                )}
 
-                                    <div className="card-body">
-                                    <h5 className="card-title">Question {index + 1}</h5>
-                                    <div className="card-box">
-                                        <p className="card-text">{question["question"]} </p>
-                                        <ul className="list-group list-group-flush">
-                                            <li className="list-group-item" onClick={this.answerClick}>{question["answers"][0]}</li>
-                                            <li className="list-group-item" onClick={this.answerClick}>{question["answers"][1]}</li>
-                                            <li className="list-group-item" onClick={this.answerClick}>{question["answers"][2]}</li>
-                                            <li className="list-group-item" onClick={this.answerClick}>{question["answers"][3]}</li>
-                                        </ul>
-                                    </div>
+                                <div>
+                                    <ResultsBtn
+                                        onClick={() => this.results(this.state.currentQuiz._id)}
+                                        score={this.state.currentQuizScore}
+                                    />
                                 </div>
-
-
-
-                                // <div className="card-body">
-                                //     <h5 className="card-title">Question</h5>
-                                //     <div className="card-box">
-                                //         <p className="card-text">{this.state.currentQuiz.questions[0]["question"]} </p>
-                                //         <ul className="list-group list-group-flush">
-                                //             <li className="list-group-item">{this.state.currentQuiz.questions[0]["answers"][0]}</li>
-                                //             <li className="list-group-item">{this.state.currentQuiz.questions[0]["answers"][1]}</li>
-                                //             <li className="list-group-item">{this.state.currentQuiz.questions[0]["answers"][2]}</li>
-                                //             <li className="list-group-item">{this.state.currentQuiz.questions[0]["answers"][3]}</li>
-                                //         </ul>
-                                //     </div>
-                                // </div>
-
-
-                                )
-                                )} 
-
                             </div>
                         </Col>
                     </Row>

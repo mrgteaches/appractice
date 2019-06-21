@@ -1,19 +1,26 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import { Col, Row, Container } from "../components/Grid";
+import API from "../utils/API";
 import "./resultsStyle.css";
 
 class Results extends Component {
     state = {
         currentQuiz: "",
-        quizScore: 100,
-        question: "",
-        yourAnswer: "",
-        correctAnswer: ""
+        currentQuizScore: 0       
     };
 
-    showResults () {
+    componentDidMount () {
+        this.showResults();
+    }
 
+    showResults () {
+        API.getQuiz(this.props.match.params.id)
+        .then(res => {
+            // console.log(res);
+            this.setState({ currentQuiz: res.data }, {currentQuizScore: res.data.taken})
+        })
+        .catch(err => console.log(err));
     };
 
 
