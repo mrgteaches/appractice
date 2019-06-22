@@ -3,7 +3,9 @@ const Schema = mongoose.Schema;
 
 const quizSchema = new Schema({
   quizNo: String,
-  taken: String,
+  taken: {
+    type: String,
+    default: "Untaken"},
   questions: Array
 });
 

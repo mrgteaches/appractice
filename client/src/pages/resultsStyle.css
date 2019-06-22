@@ -1,6 +1,7 @@
-.results {
+.thisquizresults {
     text-align: center;
     margin: auto;
+    padding: 20px;
 }
 
 .quizScore {
@@ -22,6 +23,10 @@
 }
 
 .right {
-    color: green;
+    color: 	#3CB371;
+}
+
+.results-btn {
+color: black;
 }
 

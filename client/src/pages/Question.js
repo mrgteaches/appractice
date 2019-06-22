@@ -16,7 +16,6 @@ class Question extends Component {
     }
 
     loadQuestions = () => {
-        // console.log(this.props.match.params.id)
         API.getQuiz(this.props.match.params.id)
             .then(res => {
                 // console.log(res);
@@ -30,21 +29,24 @@ class Question extends Component {
             this.setState((state) => ({
                 currentQuizScore: state.currentQuizScore + 10
             }));
+            
+        //     API.setToCorrect()
+        //     .then(res => {           
+        //         console.log(res);          
+        //     })
+        //     .catch(err => console.log(err));
         }
+
         else {
             console.log("incorrect");
         }
-        console.log(this.state.currentQuizScore);
-        console.log(e.currentTarget.value);
-
+        // console.log(this.state.currentQuizScore);
+        // console.log(e.currentTarget.value);
     }
 
-    results = (id) => {
-        // console.log("get results");
-        // console.log(this.state.currentQuizScore);
+    results = (id) => {      
         API.storeScore(id, this.state.currentQuizScore.toString())
-        .then(res => {
-           
+        .then(res => {           
             console.log(res);          
         })
         .catch(err => console.log(err));
@@ -58,8 +60,6 @@ class Question extends Component {
     }
 
     render() {
-        // console.log(this.state)
-
         return (
             this.state.currentQuiz.questions ?
                 <Container fluid>
@@ -72,14 +72,16 @@ class Question extends Component {
 
                                 {this.state.currentQuiz.questions.map((question, index) =>
                                     (
-                                        <div className="card-body">
+                                        <div className="card-body" 
+                                        // key={this.state.currentQuiz.questions.questionId}>
+                                        >
                                             <h5 className="card-title">Question {index + 1}</h5>
                                             <div className="card-box">
                                                 <p className="card-text">{question["question"]} </p>
                                                 <ul className="list-group list-group-flush">
                                                 {this.shuffleArray(question.answers).map((answer) =>
                                                         (
-                                                            <li className="list-group-item" value={answer.value} onClick={this.answerClick}>{answer.answer}</li>
+                                                            <li className="list-group-item list-group-item-action flex-column align-items-start" value={answer.value} onClick={this.answerClick}>{answer.answer}</li>
                                                         )
                                                     )}
                                                 </ul>
@@ -92,6 +94,7 @@ class Question extends Component {
                                     <ResultsBtn
                                         onClick={() => this.results(this.state.currentQuiz._id)}
                                         score={this.state.currentQuizScore}
+                                        quiz={this.state.currentQuiz._id}
                                     />
                                 </div>
                             </div>

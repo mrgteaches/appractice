@@ -1,5 +1,6 @@
 .jumbotron {
-    height: 160px;
+    height: 180px;
+    /* height: 75%; */
     width: 75%;
     margin: auto;
     background: #1E90FF;
@@ -10,14 +11,19 @@
     border-radius: 25px;
 }
 
-.logo {
+/* .logo {
     float: left;
     clear: left;
-}
+} */
 
 img {
     width: 160px;
     height: 160px;
+    /* float: left; */
+    position: absolute;
+    left: 230px;
+    top: 30px;
+
     /* margin-top: 0px; */
 
 }

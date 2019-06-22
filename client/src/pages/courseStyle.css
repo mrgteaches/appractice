@@ -1,12 +1,10 @@
 .summary {
     text-align: center;
     margin: auto;
+    padding: 20px;
 }
 
 .finalGrade {
     color: red;
 }
 
-.table {
-    margin: auto;
-}

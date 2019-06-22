@@ -16,6 +16,10 @@ export default {
     return axios.put("/api/quiz/" + id + "/scores", {taken: score} );
   }
 
+//   setToCorrect: function() {
+      
+//   }
+
 
   
 }
