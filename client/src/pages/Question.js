@@ -3,45 +3,80 @@ import { Col, Row, Container } from "../components/Grid";
 import "./questionStyle.css";
 import API from "../utils/API";
 import ResultsBtn from "../components/ResultsBtn";
+import { stat } from "fs";
 
 class Question extends Component {
     state = {
         currentQuiz: {},
-        currentQuizScore: 0,
-        // currentQuestion: {}
+        currentQuizScore: 0,      
+        quizResults: [
+            {question: "1", answer: "" },
+            {question: "2", answer: "" },
+            {question: "3", answer: "" },
+            {question: "4", answer: "" },
+            {question: "5", answer: "" },
+            {question: "6", answer: "" },
+            {question: "7", answer: "" },
+            {question: "8", answer: "" },
+            {question: "9", answer: "" },
+            {question: "10", answer: "" }
+    ]
     };
 
     componentDidMount() {
         this.loadQuestions();
+        
     }
 
     loadQuestions = () => {
         API.getQuiz(this.props.match.params.id)
             .then(res => {
-                // console.log(res);
-                this.setState({ currentQuiz: res.data })
-            })
+                
+                this.prepareQuiz(res.data);
+                this.setState({ currentQuiz: res.data })      
+                // const quizResults = []
+                // quizResults.length = this.state.currentQuiz.questions.length
+                // this.setState( {quizResults})      
+                // console.log(this.state.currentQuiz.questions.length)  
+            })            
             .catch(err => console.log(err));
     }
 
-    answerClick = (e) => {
-        if (e.target.value === 1) {
-            this.setState((state) => ({
-                currentQuizScore: state.currentQuizScore + 10
-            }));
-            
-        //     API.setToCorrect()
-        //     .then(res => {           
-        //         console.log(res);          
-        //     })
-        //     .catch(err => console.log(err));
-        }
+    answerClick = (e) => {        
+        // grabbing question number using the answer id
+        const questionId = (e.target.id.length === 3) ? e.target.id.substring(0,1) : e.target.id.substring(0,2); 
+        // determining the index for the question id on line 47
+        const index = parseInt(questionId) - 1;   
+        // determine whether answer property is empty 
+        if(this.state.quizResults[index].answer === "") { 
+            // making a copy of the array in state
+            const array = this.state.quizResults
+            // setting the answer value for the correct question
+            array[index].answer = e.target.value
 
-        else {
-            console.log("incorrect");
-        }
-        // console.log(this.state.currentQuizScore);
-        // console.log(e.currentTarget.value);
+            // determine if answer is correct
+            if (e.target.value === 1) {
+                // console.log(e.target.id);
+                this.setState({  
+                    currentQuizScore: this.state.currentQuizScore + 10,
+                    quizResults: array
+                })          
+            }          
+            else {
+                this.setState({                 
+                    quizResults: array
+                })
+            }  
+        } else {
+
+            // change!!
+            alert("already answered");
+            return
+        }     
+       
+       
+          
+        console.log(this.state)
     }
 
     results = (id) => {      
@@ -50,6 +85,11 @@ class Question extends Component {
             console.log(res);          
         })
         .catch(err => console.log(err));
+    
+    }
+
+    prepareQuiz(currentQuiz) {
+        currentQuiz.questions.forEach(question => {this.shuffleArray(question.answers)})
     }
 
     shuffleArray(array) {
@@ -72,16 +112,15 @@ class Question extends Component {
 
                                 {this.state.currentQuiz.questions.map((question, index) =>
                                     (
-                                        <div className="card-body" 
-                                        // key={this.state.currentQuiz.questions.questionId}>
-                                        >
+                                        <div className="card-body">
                                             <h5 className="card-title">Question {index + 1}</h5>
                                             <div className="card-box">
                                                 <p className="card-text">{question["question"]} </p>
                                                 <ul className="list-group list-group-flush">
-                                                {this.shuffleArray(question.answers).map((answer) =>
+                                                {question.answers.map((answer) =>
                                                         (
-                                                            <li className="list-group-item list-group-item-action flex-column align-items-start" value={answer.value} onClick={this.answerClick}>{answer.answer}</li>
+                                                            <li className="list-group-item list-group-item-action flex-column align-items-start" 
+                                                            value={answer.value} id={answer.id} onClick={this.answerClick}>{answer.answer}</li>
                                                         )
                                                     )}
                                                 </ul>
