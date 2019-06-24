@@ -15,11 +15,5 @@ export default {
   storeScore: function (id, score) {
     return axios.put("/api/quiz/" + id + "/scores", {taken: score} );
   }
-
-//   setToCorrect: function() {
-      
-//   }
-
-
   
 }

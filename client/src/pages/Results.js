@@ -7,7 +7,7 @@ import "./resultsStyle.css";
 class Results extends Component {
     state = {
         currentQuiz: "",
-        currentQuizScore: 0 
+        currentQuizScore: 0
     };
 
     componentDidMount() {
@@ -17,7 +17,10 @@ class Results extends Component {
     showResults() {
         API.getQuiz(this.props.match.params.id)
             .then(res => {
-                // console.log(res);
+                // console.log(this.props.quizResults);
+                console.log(this.props);
+
+
                 this.setState({ currentQuiz: res.data });
                 this.setState({ currentQuizScore: res.data.taken });
             })
@@ -35,11 +38,12 @@ class Results extends Component {
                     </Row>
                     <Row>
                         <div className="thisquizresults">
-                            <h2>Quiz {this.state.currentQuiz.quizNo} Results: <span className="quizScore">{this.state.currentQuizScore}%</span></h2>
+                            <h2>Quiz {this.state.currentQuiz.quizNo} Results: <span className="quizScore">
+                                {this.props.location.state.currentQuizScore}%</span></h2>
                         </div>
                     </Row>
-
-                    {this.state.currentQuiz.questions.map((question, index) =>
+ 
+                     {this.state.currentQuiz.questions.map((question, index) =>
                         (
 
                             <Row>
@@ -48,15 +52,34 @@ class Results extends Component {
                                         <div className="card-body">
                                             <ul className="list-group list-group-flush">
                                                 <li className="list-group-item">Question {index + 1} : {question["question"]}</li>
-                                                <li className="list-group-item"><span className="right">Correct Answer : {question["correctAnswer"]}  </span> </li>
+                                                <li className="list-group-item"><span className="right">
+                                                    Correct Answer : {question["correctAnswer"]}  </span> </li>
+                                     {/* ternary operator here?                */}
                                             </ul>
                                         </div>
                                     </div>
                                 </Col>
                             </Row>
-
                         )
-                    )}
+                    )} 
+
+                    {/* {this.props.location.state.quizResults.map((question, index) =>
+                        (
+                            <Row>
+                                <Col size="md-12">
+                                    <div className="resultsCard">
+                                        <div className="card-body">
+                                            <ul className="list-group list-group-flush">
+                                                <li className="list-group-item"> Question {index + 1} : {question["question"]} </li>
+                                                <li className="list-group-item"> Correct Answer: {} </li>
+                                                <li className="list-group-item"> Your Answer: {question["answer"]} </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </Col>
+                            </Row>
+                        )
+                    )} */}
 
 
 

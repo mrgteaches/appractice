@@ -24,6 +24,7 @@
 
 h1 {
     font-size: 40px;
+    color: black;
 }
 
 h5 {
@@ -38,3 +39,15 @@ p {
 li {
     font-size: 24px;
 }
+
+.results{
+    color: black;
+    background-color:white;
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+    border: 10px solid white ;
+    border-radius: 25px;
+    }
+
+    
