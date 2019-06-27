@@ -3,6 +3,7 @@ import Jumbotron from "../components/Jumbotron";
 import { Col, Row, Container } from "../components/Grid";
 import API from "../utils/API";
 import "./resultsStyle.css";
+import { Link } from "react-router-dom";
 
 class Results extends Component {
     state = {
@@ -15,17 +16,32 @@ class Results extends Component {
     }
 
     showResults() {
+        console.log(this.props.location.state.wrongAnswers)
         API.getQuiz(this.props.match.params.id)
             .then(res => {
-                // console.log(this.props.quizResults);
-                console.log(this.props);
-
-
                 this.setState({ currentQuiz: res.data });
                 this.setState({ currentQuizScore: res.data.taken });
             })
             .catch(err => console.log(err));
     };
+
+    findQuestion(question) {
+        const myQuestion = this.props.location.state.currentQuiz.questions.find((item) => {
+            if (item.questionId == question) {
+                return item.question.toString();
+            }
+        })
+        return myQuestion.question
+    }
+
+    findCorrectAnswer(question) {
+        const myRightAnswer = this.props.location.state.currentQuiz.questions.find((item) => {
+            if (item.questionId == question) {
+                return item.correctAnswer.toString();
+            }
+        })
+        return myRightAnswer.correctAnswer
+    }
 
     render() {
         return (
@@ -38,64 +54,42 @@ class Results extends Component {
                     </Row>
                     <Row>
                         <div className="thisquizresults">
-                            <h2>Quiz {this.state.currentQuiz.quizNo} Results: <span className="quizScore">
+                            <h2>Quiz {this.state.currentQuiz.quizNo} Score: <span className="quizScore">
                                 {this.props.location.state.currentQuizScore}%</span></h2>
                         </div>
                     </Row>
- 
-                     {this.state.currentQuiz.questions.map((question, index) =>
-                        (
 
-                            <Row>
-                                <Col size="md-12">
-                                    <div className="resultsCard">
-                                        <div className="card-body">
-                                            <ul className="list-group list-group-flush">
-                                                <li className="list-group-item">Question {index + 1} : {question["question"]}</li>
-                                                <li className="list-group-item"><span className="right">
-                                                    Correct Answer : {question["correctAnswer"]}  </span> </li>
-                                     {/* ternary operator here?                */}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </Col>
-                            </Row>
-                        )
-                    )} 
-
-                    {/* {this.props.location.state.quizResults.map((question, index) =>
+                    {this.props.location.state.incorrect.map((question, index) =>
                         (
                             <Row>
                                 <Col size="md-12">
                                     <div className="resultsCard">
                                         <div className="card-body">
                                             <ul className="list-group list-group-flush">
-                                                <li className="list-group-item"> Question {index + 1} : {question["question"]} </li>
-                                                <li className="list-group-item"> Correct Answer: {} </li>
-                                                <li className="list-group-item"> Your Answer: {question["answer"]} </li>
+                                                <li className="list-group-item"><span className="wrong">You answered Question {question} incorrectly.</span></li>
+                                                <li className="list-group-item">This was the question: {this.findQuestion(question)}
+                                                </li>
+                                                <li className="list-group-item"><span className="right">This was the correct answer: {this.findCorrectAnswer(question)}</span>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </Col>
                             </Row>
                         )
-                    )} */}
+                    )}
 
+                    <div>
+                        <h1 className="results" role="button">
+                            <Link to={{
+                                pathname: "/",
+                                state: {
+                                    currentQuizScore: this.state.currentQuizScore
+                                },
+                            }} >Return to Main Course Page</Link>
+                        </h1>
+                    </div>
 
-
-
-                    {/* 
-                <Row>
-                    <Col size="md-12">
-                        <div className="card-body">
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">Question 2: This was the second question.</li>
-                                <li className="list-group-item"><span className="right">Correct Answer: This was the right answer. </span> </li>
-                                <li className="list-group-item"><span className="wrong">Your Answer: This was your answer. It was dead wrong.</span></li>
-                            </ul>
-                        </div>
-                    </Col>
-                </Row> */}
                 </Container> : null
         );
     }

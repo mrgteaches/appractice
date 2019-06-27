@@ -9,17 +9,19 @@ class Question extends Component {
         currentQuiz: {},
         currentQuizScore: 0,
         quizResults: [
-            { question: "1", answer: "" },
-            { question: "2", answer: "" },
-            { question: "3", answer: "" },
-            { question: "4", answer: "" },
-            { question: "5", answer: "" },
-            { question: "6", answer: "" },
-            { question: "7", answer: "" },
-            { question: "8", answer: "" },
-            { question: "9", answer: "" },
-            { question: "10", answer: "" }
-        ]
+            { question: "1", answer: "", actualAnswer: "" },
+            { question: "2", answer: "", actualAnswer: "" },
+            { question: "3", answer: "", actualAnswer: "" },
+            { question: "4", answer: "", actualAnswer: "" },
+            { question: "5", answer: "", actualAnswer: "" },
+            { question: "6", answer: "", actualAnswer: "" },
+            { question: "7", answer: "", actualAnswer: "" },
+            { question: "8", answer: "", actualAnswer: "" },
+            { question: "9", answer: "", actualAnswer: "" },
+            { question: "10", answer: "", actualAnswer: "" }
+        ],
+        incorrect: [],
+        wrongAnswers: []
     };
 
     componentDidMount() {
@@ -30,7 +32,7 @@ class Question extends Component {
         API.getQuiz(this.props.match.params.id)
             .then(res => {
                 this.prepareQuiz(res.data);
-                this.setState({ currentQuiz: res.data })               
+                this.setState({ currentQuiz: res.data })
             })
             .catch(err => console.log(err));
     }
@@ -44,26 +46,35 @@ class Question extends Component {
         if (this.state.quizResults[index].answer === "") {
             // making a copy of the array in state
             const array = this.state.quizResults
+            const incorrectArray = this.state.incorrect
+            const wrongAnswersArray = this.state.wrongAnswers
+
             // setting the answer value for the correct question
             array[index].answer = e.target.value
 
+            array[index].actualAnswer = e.target.id
+
             // determine if answer is correct
             if (e.target.value === 1) {
-                // console.log(e.target.id);
+                console.log("answer is correct");
                 this.setState({
                     currentQuizScore: this.state.currentQuizScore + 10,
                     quizResults: array
                 })
             }
             else {
+                console.log("answer is incorrect");
                 this.setState({
                     quizResults: array
                 })
+                incorrectArray.push(questionId);
+                wrongAnswersArray.push(e.target.id)
+                this.setState({
+                    incorrect: incorrectArray,
+                })
             }
         } else {
-            // change!!
-            alert("already answered");
-            return
+            alert("You already clicked on an answer!");
         }
     }
 
@@ -107,7 +118,9 @@ class Question extends Component {
                                                     {question.answers.map((answer) =>
                                                         (
                                                             <li className="list-group-item list-group-item-action flex-column align-items-start"
-                                                                value={answer.value} id={answer.id} onClick={this.answerClick}>{answer.answer}</li>
+                                                                value={answer.value} id={answer.id} onClick={this.answerClick}>
+                                                                {answer.answer}
+                                                            </li>
                                                         )
                                                     )}
                                                 </ul>
@@ -116,22 +129,22 @@ class Question extends Component {
                                     )
                                 )}
 
-                                <div>                                  
-
-                                    <h1 className="results" role="button">                                       
+                                <div>
+                                    <h1 className="results" role="button">                                   
 
                                         <Link to={{
                                             pathname: "/results/" + this.state.currentQuiz._id,
                                             state: {
                                                 quizResults: this.state.quizResults,
                                                 currentQuizScore: this.state.currentQuizScore,
-                                                onClick: this.results(this.state.currentQuiz._id)
-                                            },                                                                 
-                                            
+                                                onClick: this.results(this.state.currentQuiz._id),
+                                                incorrect: this.state.incorrect,
+                                                currentQuiz: this.state.currentQuiz,
+                                                wrongAnswers: this.state.wrongAnswers
+                                            },
                                         }} >Click here to see your results!</Link>
-
+                                       
                                     </h1>
-
                                 </div>
                             </div>
                         </Col>
@@ -140,5 +153,7 @@ class Question extends Component {
         );
     }
 }
+
+// ReactDOM.render(<App />, document.querySelector('#app'));
 
 export default Question;

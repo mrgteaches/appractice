@@ -7,11 +7,13 @@ export default {
     return axios.get("/api/quiz/" + id);
   },
 
+    // Gets all quizzes
   getAllQuizzes: function() {
       return axios.get("http://localhost:3001/api/quiz")
       .then(res => res.data);
   },
 
+    //updates the user's scores
   storeScore: function (id, score) {
     return axios.put("/api/quiz/" + id + "/scores", {taken: score} );
   }

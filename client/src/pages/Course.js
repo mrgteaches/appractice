@@ -7,7 +7,7 @@ import API from "../utils/API"
 
 class Course extends Component {
     state = {
-        courseGrade: 100,
+        courseGrade: 0,
         quizzes: [],
         midterm: "Untaken",
         final: "Untaken"
@@ -17,6 +17,8 @@ class Course extends Component {
         API.getAllQuizzes()
             .then(res => {
                 this.setState({ quizzes: res })
+
+                this.setState({ courseGrade: this.props.location.state.currentQuizScore })
             })
             .catch(err => console.log(err));
     }
@@ -31,7 +33,7 @@ class Course extends Component {
                 </Row>
                 <Row>
                     <div className="summary">
-                        <h2>10 quizzes - 1 midterm - 1 final - Course Grade: <span className="finalGrade">{this.state.courseGrade}%</span></h2>
+                        <h2>10 quizzes - 1 midterm - 1 final - Course Average: <span className="finalGrade">{this.state.courseGrade}%</span></h2>
                     </div>
                 </Row>
                 <Row>
