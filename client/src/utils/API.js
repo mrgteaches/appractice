@@ -9,7 +9,7 @@ export default {
 
     // Gets all quizzes
   getAllQuizzes: function() {
-      return axios.get("http://localhost:3001/api/quiz")
+      return axios.get("/")
       .then(res => res.data);
   },
 

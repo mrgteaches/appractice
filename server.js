@@ -19,8 +19,8 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-// mongoose.connect(  process.env.MONGODB_URI || "mongodb://mrg:jikodikipe8@ds157383.mlab.com:57383/heroku_lrkp4brv");
-mongoose.connect( "mongodb://mrg:jikodikipe8@ds157383.mlab.com:57383/heroku_lrkp4brv");
+mongoose.connect(  process.env.MONGODB_URI || "mongodb://mrg:jikodikipe8@ds157383.mlab.com:57383/heroku_lrkp4brv");
+// mongoose.connect( "mongodb://mrg:jikodikipe8@ds157383.mlab.com:57383/heroku_lrkp4brv");
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
