@@ -3,7 +3,9 @@ const db = require("../models");
 
 mongoose.connect(
     process.env.MONGODB_URI ||
-    "mongodb://localhost/apbiologydb"
+    // "mongodb://localhost/apbiologydb"
+    "mongodb://mrg:jikodikipe8@ds157383.mlab.com:57383/heroku_lrkp4brv"
+   
 );
 
 const quizzes = [

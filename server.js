@@ -4,6 +4,7 @@ const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const cors = require("cors");
+// const dotenv = require('dotenv');
 
 app.use(cors());
 // Define middleware here
