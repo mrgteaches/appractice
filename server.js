@@ -4,7 +4,6 @@ const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const cors = require("cors");
-// const dotenv = require('dotenv');
 
 app.use(cors());
 // Define middleware here
@@ -19,8 +18,10 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(  process.env.MONGODB_URI || "mongodb://mrg:jikodikipe8@ds157383.mlab.com:57383/heroku_lrkp4brv", {useNewUrlParser:true});
-// mongoose.connect( "mongodb://mrg:jikodikipe8@ds157383.mlab.com:57383/heroku_lrkp4brv");
+mongoose.connect(  process.env.MONGODB_URI || 
+  // "mongodb://localhost/apbiologydb");
+  "mongodb://mrg:jikodikipe8@ds157383.mlab.com:57383/heroku_lrkp4brv", {useNewUrlParser:true});
+
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });

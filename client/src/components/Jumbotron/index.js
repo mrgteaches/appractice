@@ -7,7 +7,7 @@ function Jumbotron() {
             {/* <div className = "logo"> */}
             <img className= "rounded" src={require("./eplogo.jpg")} />
             {/* </div> */}
-            <h1 className="epu">AP Biology</h1>
+            <h1 className="epu">EPIC Biology</h1>
         </div>
     );
 }
